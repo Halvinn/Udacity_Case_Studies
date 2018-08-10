@@ -46,5 +46,45 @@ print(reds_df.duplicated().sum())
 
 print(whites_df.duplicated().sum())
 
+#%% Combine the dataframes
+
+# Add color column to both dataframes
+color_white = np.repeat("white", len(whites_df))
+color_red = np.repeat("red", len(reds_df))
+
+reds_df["color"] = color_red
+whites_df["color"] = color_white
+
+print(reds_df.head(2))
+
+# Concatenate the dataframes into one frame
+wines_df = pd.concat([reds_df, whites_df], ignore_index=True)
+
+print(wines_df.sample(5))
+
+# Save to csv
+wines_df.to_csv("winequality_mixed.csv", index=True)
 
 #%%
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
